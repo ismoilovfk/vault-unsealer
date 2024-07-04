@@ -1,0 +1,47 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: vault-unsealer
+  namespace: vault
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: vault-unseal
+  template:
+    metadata:
+      labels:
+        app: vault-unseal
+    spec:
+      volumes:
+        - name: script-volume
+          configMap:
+            name: vault-scripts
+      containers:
+        - resources:
+            limits:
+              memory: 200m
+              cpu: 800Mi
+          name: unselear
+          command:
+            - /bin/sh
+            - '-c'
+            - |
+              python /app/script.py
+          env:
+            - name: vaults
+              valueFrom:
+                configMapKeyRef:
+                  name: vault-addresses
+                  key: vault-addresses
+            - name: vault_k
+              valueFrom:
+                secretKeyRef:
+                  name: vault-keys
+                  key: keys
+          volumeMounts:
+            - name: script-volume
+              mountPath: /app/script.py
+              subPath: script.py
+          terminationMessagePolicy: File
+          image: ismoilovfk/python-hvac:1.0.0
