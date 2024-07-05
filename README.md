@@ -18,3 +18,27 @@ Steps to deploy...
 git clone https://github.com/ismoilovfk/vault-unsealer.git
 cd vault-unsealer
 ```
+
+Steps to deploy...
+
+1.**Clone the repository:**
+```sh
+git clone https://github.com/ismoilovfk/vault-unsealer.git
+cd vault-unsealer
+```
+
+2.**Update  vault-addresses configmap:**
+You shoud list all Vault clusters {fullnameOverride}
+```sh
+vault-addresses: 'vault,vault-prod,vault-stage'
+```
+
+3.**Update  vault-keys secret:**
+Keys within one cluster should be separated by commas, with the number ranging from 1 to 5. Keys from cluster A should be separated from those of cluster B by semicolons.
+```sh
+keys: 'vault1_key1,vault1_key2,vault1_key3;vault2_key1,vault1_key1,vault1_key2,vault1_key3;'
+```
+4.**Apply manifests:**
+```sh
+kubectl apply -f manifests
+```
