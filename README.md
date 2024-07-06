@@ -11,7 +11,7 @@ If, for any reason, you choose not to utilize HashiCorp's solutions, here is my 
 * kubectl Access: Administrative access to your Kubernetes cluster via kubectl.
 * Access to Create Resources: Permissions to create necessary resources within your Kubernetes cluster.
 
-Steps to deploy...
+## Steps to deploy...
 
 1.**Clone the repository:**
 ```sh
