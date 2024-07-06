@@ -19,14 +19,6 @@ git clone https://github.com/ismoilovfk/vault-unsealer.git
 cd vault-unsealer
 ```
 
-Steps to deploy...
-
-1.**Clone the repository:**
-```sh
-git clone https://github.com/ismoilovfk/vault-unsealer.git
-cd vault-unsealer
-```
-
 2.**Update  vault-addresses configmap:**
 You shoud list all Vault clusters {fullnameOverride}
 ```sh
