@@ -8,8 +8,6 @@ data:
     import hvac
     import os
     import requests.exceptions
-    import time
-
     def main():
         while True:
             vaults = os.getenv('vaults').split(',')

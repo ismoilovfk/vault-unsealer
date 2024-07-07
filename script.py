@@ -1,7 +1,6 @@
 import hvac
 import os
 import requests.exceptions
-import time
 
 def main():
     while True:
